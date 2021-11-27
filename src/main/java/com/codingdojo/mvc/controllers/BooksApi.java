@@ -50,6 +50,12 @@ public class BooksApi {
 		return book;
 	}
 	
+//	@PutMapping("/api/books/{id}")
+//	public Book update(@PathVariable("id") Long id, @ModelAttribute("book") Book book) {
+//		Book book = bookService.updateBook(id, book);
+//		return book;
+//	}
+	
 	@DeleteMapping("/api/books/{id}")
 	public void destroy(@PathVariable("id") Long id) {
 		bookService.deleteBook(id);

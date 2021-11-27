@@ -37,9 +37,27 @@ public class BookService {
 		}
 	}
 	
-	public Book updateBook(Long id, Book book) {
-		return bookRepo.save(book);
+	public Book updateBook(Long id,String title,String desc, String language, Integer pages) {
+		Optional<Book> optionalBook =bookRepo.findById(id);
+		if(optionalBook.isPresent()) {
+			Book book = optionalBook.get();
+			book.setId(id);
+			book.setTitle(title);
+			book.setDescription(desc);
+			book.setLanguage(language);
+			book.setNumberOfPages(pages);
+			return bookRepo.save(book);
+		}else {
+			return null;
+		}
 	}
+//	public Book updateBook(Long id, Book book) {
+//		Optional<Book> optionalBook =bookRepo.findById(id);
+//		if(optionalBook.isPresent()) {
+//			bookRepo.setId(id);
+//		}
+//		return bookRepo.save(book);
+//	}
 	
 	public void deleteBook(Long id) {
 		bookRepo.deleteById(id);
